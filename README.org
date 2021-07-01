@@ -1,0 +1,21 @@
+* install grpc
+#+begin_src shell
+yay -S --noconfirm community/grpc
+#+end_src
+
+* install grpc go plugins
+#+begin_src shell
+$ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+$ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+$ export PATH="$PATH:$(go env GOPATH)/bin"
+#+end_src
+
+* start server
+#+begin_src shell
+make server
+#+end_src
+
+* start client
+#+begin_src shell
+make client
+#+end_src
