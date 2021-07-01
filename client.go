@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"log"
-	"time"
 
 	"demo/demo/pb"
 
@@ -19,8 +18,5 @@ func main() {
 	defer conn.Close()
 
 	client := pb.NewSendClient(conn)
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-
-	client.Do(ctx, &wrapperspb.StringValue{Value: "来点中文 ok 吗"})
+	client.Do(context.Background(), &wrapperspb.StringValue{Value: "message from a dual client"})
 }
